@@ -1,0 +1,17 @@
+.footblock{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 13px;
+    color: white;
+}
+
+.footblock.disabled{
+    color: yellow;
+}
+
+.footaction{
+    color: #1698d9;
+    cursor: pointer;
+}

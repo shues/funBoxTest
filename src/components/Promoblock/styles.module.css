@@ -1,0 +1,35 @@
+.promoblock{
+    position: relative;
+    display: block;
+    left: 45px;
+    top: -20px;
+    width: 265px;
+    height: 166px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.promo{
+    font-size: 16px;
+}
+
+.promo.hover.selected{
+    color: #e62e7a;
+}
+
+.promoCont{
+    margin-top: 5px;
+    margin-left: -2px;
+    display: block;
+}
+
+.prodName{
+    font-size: 47px;
+    font-weight: bolder;
+}
+
+.prodType{
+    font-size: 24px;
+    font-weight: bold;
+}
+

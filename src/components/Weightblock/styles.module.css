@@ -1,0 +1,32 @@
+.prodWeightCont{
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 40px;
+    color: white;
+    background-color: #1698d9;
+}
+
+.prodWeightCont.hover{
+    background-color: #2ea8e6;
+}
+
+.prodWeightCont.selected{
+    background-color: #d91667;
+}
+
+.prodWeightCont.selected.hover{
+    background-color: #e62e7a;
+}
+
+.prodWeightCont.disabled{
+    background-color: #b3b3b3;
+}
+
+.prodWeight{
+    display: block;
+    margin-top: 10px;
+    font-size: 40px;
+}
