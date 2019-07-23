@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
-import styles from './styles.module.css';
+import './styles.css';
 
 class Weightblock extends Component{
     render(){
+        const state = this.props.state;
+        const subClassName = ' ' + state.hover + ' ' + state.selected + ' ' + state.disabled;
         return(
-            <div 
-                className = {
-                    styles['prodWeightCont'] + ' ' + 
-                    (this.props.state.selected?styles['selected']:'') + ' ' +
-                    (this.props.state.hover?styles['hover']:'') + ' ' +
-                    (this.props.state.disabled ? styles['disabled']:'')
-                }
-            >
-                <span className = {styles['prodWeight']}>
+            <div className = {'prodWeightCont' + subClassName}>
+                <span className = 'prodWeight'>
                     {this.props.weight}
                 </span>
                 <span>кг</span>

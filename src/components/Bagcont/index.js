@@ -1,53 +1,64 @@
 import React, {Component} from 'react';
-import styles from './styles.module.css';
+import './styles.css';
 import Bag from '../Bag';
 import Footblock from '../Footblock';
 
 class Bagcont extends Component{
-    state = {
-        hover: false,
-        selected: false,
-        disabled: (this.props.options.state === 'disabled')
+    constructor(props){
+        super(props);
+        this.state = {
+            hover: '',
+            selected: '',
+            disabled: this.props.options.disabled
+        }
+
+        this.hoverBag = this.hoverBag.bind(this);
+        this.leaveBag = this.leaveBag.bind(this);
+        this.selectBag = this.selectBag.bind(this);
     }
 
     render(){
         return(
-            <div className = {styles['bagcont']}>
-            <Bag 
-                options = {this.props.options} 
-                state = {this.state} 
-                onHoverBag = {this.hoverBag.bind(this)}
-                onLeaveBag = {this.leaveBag.bind(this)}
-                onSelectBag = {this.selectBag.bind(this)}
-            />
-            <Footblock 
-                footblock = {this.props.options.footblock} 
-                footaction = {this.props.options.footaction}
-                state = {this.state}
-                onHoverStr = {this.hoverBag.bind(this)}
-                onLeaveStr = {this.leaveBag.bind(this)}
-                onSelectStr = {this.selectBag.bind(this)}
-
-            />
+            <div 
+                className = "bagcont"
+                onClick = {this.selectBag}
+                onMouseEnter = {this.hoverBag}
+                onMouseLeave = {this.leaveBag}
+            >
+                <Bag
+                    state = {this.state}
+                    options = {this.props.options} 
+                />
+                <Footblock
+                    state = {this.state} 
+                    footmsg = {this.props.options.footblock}
+                    name = {this.props.options.prodType} 
+                />
             </div>
         );
     }
   
     hoverBag = () => {
+        console.log('hover');
+        if (this.state.disabled !== '') return;
         this.setState({
-            hover: true
+            hover: 'hover',
         });
     }
 
     leaveBag = () => {
+        console.log('leave');
+        if (this.state.disabled !== '') return;
         this.setState({
-            hover: false
+            hover: '',
         });
     }
 
     selectBag = () => {
+        console.log('selected');
+        if (this.state.disabled !== '') return;
         this.setState({
-            selected: !this.state.selected
+            selected: this.state.selected === '' ? 'selected' : ''
         });
     }
 }

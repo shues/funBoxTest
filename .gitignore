@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.eslintrc.js
+./src/components/Bagcount/.index.js.swp
+./src/components/Footblock/.index.js.swp
+.gitignore.swp

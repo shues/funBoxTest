@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
-import styles from './styles.module.css';
+import './styles.css';
 
 class Promoblock extends Component{
     render(){
-        const property = (this.props.state.selected?'selected':'default')+
-                        (this.props.state.hover?'H':'');
+        let promo = 'Сказочное заморское яство';
+        if ((this.props.state.selected === 'selected')&&(this.props.state.hover === 'hover')){
+            promo = 'Котэ не одобряет?';
+        }
+        const state = this.props.state;
+        const subClassName = ' ' + state.hover + ' ' + state.selected;
         return(
-            <div className = {styles['promoblock']}>
-                <span className = {styles['promo'] + ' ' +
-                        (this.props.state.selected?styles['selected']:'') + ' ' +
-                        (this.props.state.hover ? styles['hover']:'')
-                }>
-                    {this.props.options.promo[property]}
+            <div className = 'promoblock'>
+                <span className = {'promo' + subClassName}>
+                   {promo} 
                 </span>
                 
-                <div className = {styles['promoCont']}>
-                    <span className = {styles['prodName']}>{this.props.options.prodName}</span>
+                <div className = 'promoCont'>
+                    <span className = 'prodName'>Нямушка</span>
                     <br/>
-                    <span className = {styles['prodType']}>{this.props.options.prodType}</span>
+                    <span className = 'prodType'>{this.props.options.prodType}</span>
                     <br/>
                     <br/>
                     <span>{this.props.options.portions}</span>

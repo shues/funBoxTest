@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import styles from './styles.module.css';
+import './styles.css';
 import Promoblock from '../Promoblock';
 import Weightblock from '../Weightblock';
 
@@ -8,19 +8,19 @@ class Bag extends Component{
     render(){
         const PromoSection = this.props.options;
         const Weight = this.props.options.weight;
+        const state = this.props.state;
+        const subClassName = ' ' + state.hover + ' ' + state.selected + ' ' +  state.disabled;
+
         return(
-            <div 
-                className = {styles['bigBag'] + ' ' +
-                    (this.props.state.selected ? styles['selected']:'') + ' ' +
-                    (this.props.state.hover ? styles['hover'] : '') + ' ' +
-                    (this.props.state.disabled ? styles['disabled'] : '')
-                }
-                onMouseEnter = {this.props.state.disabled ? null : this.props.onHoverBag}
-                onMouseLeave = {this.props.state.disabled ? null : this.props.onLeaveBag}
-                onClick      = {this.props.state.disabled ? null : this.props.onSelectBag}
-            >
-                <Promoblock options = {PromoSection} state = {this.props.state}/>
-                <Weightblock weight = {Weight} state = {this.props.state}/>
+            <div className = {'bigBag' + subClassName}>
+                <Promoblock 
+                    state={this.props.state} 
+                    options = {PromoSection} 
+                />
+                <Weightblock 
+                    weight = {Weight} 
+                    state = {this.props.state} 
+                />
             </div>
         );
     }

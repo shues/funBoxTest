@@ -5,17 +5,15 @@ import Header from './components/Header';
 import {inpData} from './data';
 
 class App extends Component {
+
     render() {
-        console.log(this.state);
+        const header = inpData.header;
+        const BagsList = inpData.bags.map((el,i)=> <Bagcont key={i} options={el}/>);
+        console.log(inpData);
         return (
             <div className="App">
-                <Header header = {inpData.header}/>
-                {inpData.bags.map(
-                    bagElem => <Bagcont 
-                                    key = {bagElem.id} 
-                                    options = {bagElem}
-                                />
-                )}
+                <Header header = {header}/>
+                {BagsList}
             </div>
         );
     }

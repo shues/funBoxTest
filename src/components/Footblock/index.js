@@ -1,28 +1,24 @@
 import React, {Component} from 'react';
-import styles from './styles.module.css';
+import './styles.css';
 
 class Footblock extends Component{
     render(){
-        const property = this.props.state.disabled ? 
-                            'disabled' : 
-                            (this.props.state.selected?'selected':'default')+
-                            (this.props.state.hover?'H':'');
+        let footmsg = "Чего сидишь, порадуй котэ, ";
+        let footAction = "купи";
+        if (this.props.state.selected) {
+            footmsg = this.props.footmsg;
+            footAction = '';
+        } else if (this.props.state.disabled) {
+            footmsg = "Печалька, " + this.props.name + " закончился";
+            footAction = '';
+        }
+        
+        const subClassName = ' ' + this.props.state.disabled;
+
         return(
-            <div className = {styles['footblock'] + ' ' + 
-                (this.props.state.disabled ? styles['disabled']:'')}
-            >
-                {this.props.footblock[property]}
-                <u 
-                    className = {styles['footaction']}
-                    onMouseEnter = {this.props.state.disabled ? null : 
-                                    this.props.onHoverStr}
-                onMouseLeave = {this.props.state.disabled ? null : 
-                                    this.props.onLeaveStr}
-                onClick      = {this.props.state.disabled ? null : 
-                                    this.props.onSelectStr}
-                >
-                    {this.props.footaction[property]}
-                </u>
+            <div className = {'footblock' + subClassName}>
+                <span>{footmsg}</span> 
+                <u className = 'footaction'>{footAction}</u>
             </div>
         );
     }
